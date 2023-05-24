@@ -9,7 +9,7 @@ public abstract class Hero extends Entity{
     private int level;
     private int gold;
     private Weapon weapon;
-    private ArrayList<Potion> potion;
+    private ArrayList<Potion> potion = new ArrayList<Potion>();
 
     public Hero(String name, int gold){
         super(name);
@@ -44,7 +44,9 @@ public abstract class Hero extends Entity{
         this.gold = gold;
     }
 
-    public void addToGold(int gold ){ this.setGold(this.gold + gold);}
+    public void addToGold(int gold){
+        this.setGold(this.gold + gold);
+    }
 
     public Weapon getWeapon() {
         return weapon;
@@ -62,10 +64,21 @@ public abstract class Hero extends Entity{
         this.potion = potion;
     }
 
+    public void addToPotions(Potion potionToAdd){
+        potion.add(potionToAdd);
+    }
+    public void printItems(){
+        System.out.println("\nPotions available: \n");
+
+        for (Potion i: potion){
+            System.out.println(i.getName());
+        }
+    }
     public void setLevel(int level) {
         this.level = level;
     }
-    public void increaseLevel(){ this.level++;
+    public void increaseLevel(){
+        this.level++;
         System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Level up" + ConsoleColors.RESET);
     }
 

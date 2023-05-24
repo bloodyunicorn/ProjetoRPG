@@ -11,13 +11,11 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
 
-        Game game = new Game();
-
         Knight test = new Knight("xxx", 20);
         test.setStrength(40);
         test.setHp(80);
-
-        game.maze(test, 2);
+        Game test1 = new Game(test);
+        test1.maze(0, 1);
 
 
         System.out.println(ConsoleColors.YELLOW_UNDERLINED + "\n\n***** Really Epic and Confusing Game *****\n\n" + ConsoleColors.RESET);
@@ -122,9 +120,9 @@ public class Main {
 
 
 
-            int option = 0;
-
-            boolean win = game.maze(player, option);
+            int room=0, option = 0;
+            Game game = new Game(player);
+            boolean win = game.maze(room, option);
 
             if (!win) {
                 System.out.println("GAME OVER");

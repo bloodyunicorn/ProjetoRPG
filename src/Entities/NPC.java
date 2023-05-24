@@ -8,6 +8,7 @@ public class NPC extends Entity{
         super(name,hp,strength);
     }
 
+
     @Override
     public void showDetails() {
         System.out.println(ConsoleColors.PURPLE_UNDERLINED + "\nDetails about "+ super.getName() +"\n" + ConsoleColors.RESET);
