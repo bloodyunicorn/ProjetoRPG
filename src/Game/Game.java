@@ -6,6 +6,7 @@ import Main.ConsoleColors;
 import Entities.*;
 
 import javax.swing.text.html.parser.Entity;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,42 +17,19 @@ public class Game {
     public Game(Hero player) {
 
         this.player = player;
-        seller.addItems(mjolnir);
-        seller.addItems(bladesOfChaos);
-        seller.addItems(sword);
-        seller.addItems(scorpionCharm);
-        seller.addItems(echoes);
-        seller.addItems(talisman);
-        seller.addItems(talonBow);
-        seller.addItems(bow);
-        seller.addItems(arch);
-        seller.addItems(hp);
-        seller.addItems(superHp);
+        Seller.seller.addItems(Weapon.mjolnir);
+        Seller.seller.addItems(Weapon.bladesOfChaos);
+        Seller.seller.addItems(Weapon.sword);
+        Seller.seller.addItems(Weapon.scorpionCharm);
+        Seller.seller.addItems(Weapon.echoes);
+        Seller.seller.addItems(Weapon.talisman);
+        Seller.seller.addItems(Weapon.talonBow);
+        Seller.seller.addItems(Weapon.bow);
+        Seller.seller.addItems(Weapon.arch);
+        Seller.seller.addItems(Potion.hp);
+        Seller.seller.addItems(Potion.superHp);
 
     }
-
-    Seller seller = new Seller();
-
-    //items
-    Weapon mjolnir = new Weapon("Mjölnir", 130, 60);
-    Weapon bladesOfChaos = new Weapon("Blades Of Chaos", 50, 35);
-    Weapon sword = new Weapon("Sword", 15, 20);
-    Weapon scorpionCharm = new Weapon("The Magic Scorpion Charm", 130, 60);
-    Weapon echoes = new Weapon("Echoes of Helia", 50, 35);
-    Weapon talisman = new Weapon("Talisman", 15, 20);
-    Weapon talonBow = new Weapon("Talon Bow", 130, 60);
-    Weapon bow = new Weapon("Mechanic Bow", 50, 35);
-    Weapon arch = new Weapon("Arch", 15, 20);
-    Potion hp = new Potion("Hp potion", 25, 5);
-    Potion superHp = new Potion("Super Hp potion", 45, 9);
-
-    //NPCs
-    NPC karen = new NPC("Wild Karen", 50, 5);
-    NPC balrog = new NPC("Devious Balrog", 120, 50);
-    NPC cereberus = new NPC("Cerberus", 100, 30);
-    NPC bowser = new NPC("Bowser", 80, 20);
-    NPC ogre = new NPC("Ogre", 60, 40);
-
 
     public boolean fight(NPC enemy) {
 
@@ -80,42 +58,7 @@ public class Game {
         player.addToGold(10);
     }
 
-    public void selling(){
-        Scanner in = new Scanner(System.in);
-        seller.printItems();
 
-        System.out.println("Golden Coins: " + ConsoleColors.YELLOW_BRIGHT + player.getGold() + ConsoleColors.RESET);
-
-        System.out.println("\nWould you like to buy any of this items? (Y/N)");
-        String answer = in.nextLine();
-        answer = answer.toUpperCase();
-        boolean check = true;
-
-        while (answer.equals("Y")){
-
-            System.out.println("Which one?");
-            int op = in.nextInt();
-            seller.sellItem(op, player);
-
-            System.out.println("\nAnything else? (Y/N)");
-            String tempAnswer = in.next();
-            tempAnswer = tempAnswer.toUpperCase();
-
-            answer = tempAnswer;
-
-            System.out.println(answer);
-            if (answer.equals("Y") || answer.equals("YES")){
-                seller.printItems();
-            } else  {
-                System.out.println("It was a pleasure to do business with you!");
-                return;
-            }
-
-        }
-
-        System.out.println("Maybe next time.");
-
-    }
 
 
     public boolean maze(int room, int option) {
@@ -127,19 +70,20 @@ public class Game {
 
         switch (option){
             case 1:
-                    System.out.println("Hello good traveller, I'm just a humble seller walking by.\nLet me show you what I have here?\n");
+                    System.out.println("'Hello good traveller, I'm just a humble seller walking by.\nLet me show you what I have here?'\n");
 
-                    selling();
+                    Seller.seller.selling(player);
 
+                    maze(option, 2);
 
                     break;
             case 2:
                     player.showDetails();
                     System.out.println("A wild Karen appears! \nShe tries to nag you with a complaint about how blue the sky is. \nIt's hopeless to argue against her so you fight her.");
 
-                    karen.showDetails();
+                    NPC.karen.showDetails();
 
-                    win = fight(karen);
+                    win = fight(NPC.karen);
 
                     if (!win){
                         return false;
@@ -150,26 +94,70 @@ public class Game {
 
                         player.showDetails();
 
-                        maze(2, 3);
+                    System.out.println("Now, you can continue your journey.");
+                    System.out.println("Along the way you start to feel a bit tired. You are an hour away from the next Village.\nWould you like to stop and rest or continue? (S/C)");
+                    answer = in.nextLine();
+                    answer = answer.toUpperCase();
+
+                    if (answer.equals("C")){
+                        op = 4;//village
+                    } else if (answer.equals("S")){
+                        op = 7;//ogre
+                    } else {
+                        System.out.println("Since you don't know how to press the right letter, we will choose for you.");
+                        op = 7;//ogre
+                    }
+                        maze(option, op);
 
                     break;
 
-            case 3: win = fight(bowser);
+            case 3:
+
+                    System.out.println("***** The Man with the Mustache *****");
+
+
+
+                    win = fight(NPC.bowser);
 
                     if (!win){
                         return false;
                     }
 
-                        System.out.println("Bowser was defeated.\n");
+                    System.out.println("Bowser was defeated and the Princess is Saved.\n");
 
-                        wonTheBattle();
-                        player.showDetails();
+                    wonTheBattle();
+                    player.showDetails();
 
-                        maze(3, 1);
+
+                    maze(option, 20);
 
                     break;
-            case 4: break;
-            case 5: win = fight(cereberus);
+            case 4:
+                System.out.println("***** The Village *****");
+
+                System.out.println("\nAs you arrive, villagers start to notice you. They already know what you are looking for.");
+                System.out.println("You need to look around and find someone to point you to the right direction.\n\n.\n.\n.\n\n");
+
+                System.out.println("'What's that???'");
+                System.out.println("Looks like someone is following you.\nYou run towards him and find out it is a man with a big mustache.");
+                System.out.println("This man tries to run but with no chance and you ask him why he was following you.");
+                System.out.println("'I'm sorry, I didn't mean to bother you. I've heard that you are looking for the Goblet of fire, and maybe i can help you. I just need a favour in exchange. \nWould you like to hear it? (Y/N)");
+
+                System.out.println();
+                answer = in.nextLine();
+                answer = answer.toUpperCase();
+
+                if (answer.equals("Y")){
+                    maze(option, 3);
+                } else if (answer.equals("N")){
+                    op = 6;
+                } else {
+                    System.out.println("Since you don't know how to press the right letter, we will choose for you.");
+                    op = 3;
+                }
+
+                break;
+            case 5: win = fight(NPC.cereberus);
 
                     if (!win){
                         return false;
@@ -180,10 +168,38 @@ public class Game {
                     wonTheBattle();
                     player.showDetails();
 
-                    maze(5, 1);
+                    System.out.println();
+                    answer = in.nextLine();
+                    answer = answer.toUpperCase();
+
+                    if (answer.equals("C")){
+                        op = 4;
+                    } else if (answer.equals("S")){
+                        op = 7;
+                    } else {
+                        System.out.println("Since you don't know how to press the right letter, we will choose for you.");
+                        op = 7;
+                    }
+                    maze(option, op);
                     break;
-            case 6: break;
-            case 7: win = fight(ogre);
+            case 6:
+
+
+                    System.out.println();
+                    answer = in.nextLine();
+                    answer = answer.toUpperCase();
+
+                    if (answer.equals("C")){
+                        op = 4;
+                    } else if (answer.equals("S")){
+                        op = 7;
+                    } else {
+                        System.out.println("Since you don't know how to press the right letter, we will choose for you.");
+                        op = 7;
+                    }
+                    maze(option, op);
+                    break;
+            case 7: win = fight(NPC.ogre);
 
                     if (!win){
                         return false;
@@ -194,13 +210,78 @@ public class Game {
                     wonTheBattle();
                     player.showDetails();
 
-                    maze(7, 1);
+                System.out.println();
+                answer = in.nextLine();
+                answer = answer.toUpperCase();
+
+                if (answer.equals("C")){
+                    op = 4;
+                } else if (answer.equals("S")){
+                    op = 7;
+                } else {
+                    System.out.println("Since you don't know how to press the right letter, we will choose for you.");
+                    op = 7;
+                }
+                maze(option, op);
                     break;
-            case 8: break;
+            case 8: System.out.println();
+                answer = in.nextLine();
+                answer = answer.toUpperCase();
+
+                if (answer.equals("C")){
+                    op = 4;
+                } else if (answer.equals("S")){
+                    op = 7;
+                } else {
+                    System.out.println("Since you don't know how to press the right letter, we will choose for you.");
+                    op = 9;
+                }
+                maze(option, op);
+                break;
             case 9:
-            case 10: break; //unicornio
-            case 11: break;
-            case 12: win = fight(balrog);
+                    System.out.println();
+                    answer = in.nextLine();
+                    answer = answer.toUpperCase();
+
+                    if (answer.equals("C")){
+                        op = 8;
+                    } else if (answer.equals("S")){
+                        op = 7;
+                    } else {
+                        System.out.println("Since you don't know how to press the right letter, we will choose for you.");
+                        op = 7;
+                    }
+                    maze(option, op);
+                    break;
+            case 10: System.out.println();
+                answer = in.nextLine();
+                answer = answer.toUpperCase();
+
+                if (answer.equals("C")){
+                    op = 9;
+                } else if (answer.equals("S")){
+                    op = 7;
+                } else {
+                    System.out.println("Since you don't know how to press the right letter, we will choose for you.");
+                    op = 6;
+                }
+                maze(option, op);
+                break; //unicornio
+            case 11: System.out.println();
+                answer = in.nextLine();
+                answer = answer.toUpperCase();
+
+                if (answer.equals("C")){
+                    op = 4;
+                } else if (answer.equals("S")){
+                    op = 7;
+                } else {
+                    System.out.println("Since you don't know how to press the right letter, we will choose for you.");
+                    op = 12;
+                }
+                maze(option, op);
+                break;
+            case 12: win = fight(NPC.balrog);
 
                     if (!win){
                         return false;
@@ -215,9 +296,9 @@ public class Game {
                         break;
             default:
                 System.out.println("Seller: 'Hello again!'");
-                selling();
+                Seller.seller.selling(player);
 
-                maze(0, room);
+                maze(option, 9);
         }
             return true;
 

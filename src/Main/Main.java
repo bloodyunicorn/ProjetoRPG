@@ -124,6 +124,7 @@ public class Main {
             Game game = new Game(player);
             boolean win = game.maze(room, option);
 
+
             if (!win) {
                 System.out.println("GAME OVER");
 

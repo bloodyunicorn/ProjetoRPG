@@ -47,6 +47,9 @@ public abstract class Hero extends Entity{
     public void addToGold(int gold){
         this.setGold(this.gold + gold);
     }
+    public void takeFromGold(int gold){
+        this.setGold(this.gold - gold);
+    }
 
     public Weapon getWeapon() {
         return weapon;
@@ -87,7 +90,7 @@ public abstract class Hero extends Entity{
         double enemyHp = npc.getHp();
         enemyHp -= this.getStrength();
 
-        System.out.println(npc.getName() + " HP: " + npc.getHp());
+        System.out.println("PUM");
         npc.setHp(enemyHp);
 
     }

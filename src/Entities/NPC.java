@@ -31,8 +31,13 @@ public class NPC extends Entity{
         double playerHp = player.getHp();
         playerHp -= damage;
 
-        System.out.println("Your HP: " + player.getHp());
+        System.out.println("POW");
         player.setHp(playerHp);
 
     }
+    public static NPC karen = new NPC("Wild Karen", 50, 5);
+    public static NPC balrog = new NPC("Devious Balrog", 120, 50);
+    public static NPC cereberus = new NPC("Cerberus", 100, 30);
+    public static NPC bowser = new NPC("Bowser", 80, 20);
+    public static NPC ogre = new NPC("Ogre", 60, 40);
 }
