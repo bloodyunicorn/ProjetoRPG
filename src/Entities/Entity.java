@@ -33,12 +33,18 @@ abstract class Entity {
         this.strength = strength;
     }
 
+    public void addToStrength(double strength) {
+        setStrength(this.strength+strength);
+    }
     public double getStrength(){
         return strength;
     }
     public void addToStrength(int strength){
         this.setStrength(this.strength + strength);
         System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "+ " + strength + "pts of Strength" + ConsoleColors.RESET);
+    }
+    public void takeFromStrength(double strength){
+        this.setStrength(this.strength - strength);
     }
     public String getName() {
         return name;

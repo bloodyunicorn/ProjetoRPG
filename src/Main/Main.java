@@ -11,11 +11,11 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
 
-        Knight test = new Knight("xxx", 20);
+       /* Knight test = new Knight("xxx", 20);
         test.setStrength(40);
         test.setHp(80);
         Game test1 = new Game(test);
-        test1.maze(0, 1);
+        test1.maze(0, 1);*/
 
 
         System.out.println(ConsoleColors.YELLOW_UNDERLINED + "\n\n***** Really Epic and Confusing Game *****\n\n" + ConsoleColors.RESET);
@@ -81,7 +81,7 @@ public class Main {
                 }
             } while (!valid);
 
-            System.out.println("\nPlease distribute " + ConsoleColors.YELLOW_UNDERLINED + points + "points" + ConsoleColors.RESET + " between HP and Strength. \nEach 5 points can increase Strength by or HP by 5.");
+            System.out.println("\nPlease distribute " + ConsoleColors.YELLOW_UNDERLINED + points + "points" + ConsoleColors.RESET + " between HP and Strength. \nEach 5 points wil increase Strength by 1 or HP by 5.");
 
             String confirm;
 
@@ -113,11 +113,20 @@ public class Main {
             player.setGold(gold);
 
             System.out.println("\nHello " + name + ", welcome to RECG!");
+            in.nextLine();
             System.out.println("\nWe need your help to recover the stolen " + ConsoleColors.YELLOW + "Goblet of Fire." + ConsoleColors.RESET);
+            in.nextLine();
             System.out.println("It is very valuable to our community and we will pay you the amount of " + ConsoleColors.YELLOW_UNDERLINED + "*2000 golden coins*" + ConsoleColors.RESET + " if you bring it back from the hands of the Devious Balrog.");
+            in.nextLine();
             System.out.println("But watch out! There will be dangers in your path, enemies to defeat and other perils to overcome.");
-            System.out.println("We will give you " + gold + " golden coins to begin your journey.\n\nThe Lord of Light wishes you the best fortune in your adventure!");
+            in.nextLine();
+            System.out.println("We will give you " + gold + " golden coins to begin your journey.\n");
+            in.nextLine();
+            System.out.println("The Lord of Light wishes you the best fortune in your adventure!");
+            in.nextLine();
 
+
+                
 
 
             int room=0, option = 0;

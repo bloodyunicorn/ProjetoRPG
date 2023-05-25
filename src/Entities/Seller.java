@@ -22,12 +22,18 @@ public class Seller {
     public void sellItem(int op, Hero player){
         op -= 1;
 
+        System.out.println(op);
+
         boolean verifyHeroType = false;
-        for(ItemHeroType i : items.get(op).getHeroType())  {
-            if(i.toString().equals(player.getClass().toString().toUpperCase())){
-                  verifyHeroType = true;
+
+        for( ItemHeroType i : (items.get(op)).getHeroType())  {
+
+            if(i.toString().equals(player.getClass().getSimpleName().toUpperCase())){
+                verifyHeroType = true;
+
             }
         }
+
         if(verifyHeroType==true){
 
 
@@ -47,7 +53,7 @@ public class Seller {
                 System.out.println("Golden Coins: " + ConsoleColors.YELLOW_BRIGHT + player.getGold() + ConsoleColors.RESET);
             }
         }else {
-            System.out.println("This Item can only be used by " + items.get(op).getHeroType());
+            System.out.println("This Item can only be used by " + (items.get(op)).getHeroType());
         }
 
     }
@@ -99,6 +105,7 @@ public class Seller {
             System.out.println(answer);
             if (answer.equals("Y") || answer.equals("YES")){
                 this.printItems();
+
             } else  {
                 System.out.println("It was a pleasure to do business with you!");
                 return;

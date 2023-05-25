@@ -20,6 +20,4 @@ public class Potion extends HeroItems {
         this.heal = heal;
     }
 
-    public static Potion hp = new Potion("Hp potion", 25, Weapon.allTypeItems, 5);
-    public static Potion superHp = new Potion("Super Hp potion", 45, Weapon.allTypeItems,9);
 }

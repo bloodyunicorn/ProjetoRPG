@@ -1,5 +1,6 @@
 package Game;
 import Itens.HeroItems;
+import Itens.ItemHeroType;
 import Itens.Potion;
 import Itens.Weapon;
 import Main.ConsoleColors;
@@ -11,25 +12,53 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-
+    Scanner in = new Scanner(System.in);
     Hero player;
 
     public Game(Hero player) {
 
         this.player = player;
-        Seller.seller.addItems(Weapon.mjolnir);
-        Seller.seller.addItems(Weapon.bladesOfChaos);
-        Seller.seller.addItems(Weapon.sword);
-        Seller.seller.addItems(Weapon.scorpionCharm);
-        Seller.seller.addItems(Weapon.echoes);
-        Seller.seller.addItems(Weapon.talisman);
-        Seller.seller.addItems(Weapon.talonBow);
-        Seller.seller.addItems(Weapon.bow);
-        Seller.seller.addItems(Weapon.arch);
-        Seller.seller.addItems(Potion.hp);
-        Seller.seller.addItems(Potion.superHp);
+        Seller.seller.addItems(mjolnir);
+        Seller.seller.addItems(bladesOfChaos);
+        Seller.seller.addItems(sword);
+        Seller.seller.addItems(scorpionCharm);
+        Seller.seller.addItems(echoes);
+        Seller.seller.addItems(talisman);
+        Seller.seller.addItems(talonBow);
+        Seller.seller.addItems(bow);
+        Seller.seller.addItems(arch);
+        Seller.seller.addItems(hp);
+        Seller.seller.addItems(superHp);
+        archerItems.add(ItemHeroType.ARCHER);
+        knightItems.add(ItemHeroType.KNIGHT);
+        mageItems.add(ItemHeroType.MAGE);
+        allTypeItems.add(ItemHeroType.MAGE);
+        allTypeItems.add(ItemHeroType.KNIGHT);
+        allTypeItems.add(ItemHeroType.ARCHER);
 
     }
+
+
+    Weapon mjolnir = new Weapon("Mjölnir", 130, knightItems , 60);
+    Weapon bladesOfChaos = new Weapon("Blades Of Chaos", 50, knightItems ,35);
+    Weapon sword = new Weapon("Sword", 15, knightItems,20);
+    Weapon scorpionCharm = new Weapon("The Magic Scorpion Charm", 130,mageItems , 60);
+    Weapon echoes = new Weapon("Echoes of Helia", 50, mageItems,35);
+    Weapon talisman = new Weapon("Talisman", 15, mageItems,20);
+    Weapon talonBow = new Weapon("Talon Bow", 130, archerItems, 60);
+    Weapon bow = new Weapon("Mechanic Bow", 50, archerItems, 35);
+    Weapon arch = new Weapon("Arch", 15, archerItems, 20);
+    Potion hp = new Potion("Hp potion", 25, allTypeItems, 5);
+    Potion superHp = new Potion("Super Hp potion", 45, allTypeItems,9);
+
+    public static ArrayList<ItemHeroType> archerItems = new ArrayList<>();
+    public static ArrayList<ItemHeroType> knightItems = new ArrayList<>();
+    public static ArrayList<ItemHeroType> mageItems = new ArrayList<>();
+    public static ArrayList<ItemHeroType> allTypeItems = new ArrayList<>();
+
+
+
+
 
     public boolean fight(NPC enemy) {
 
@@ -56,6 +85,7 @@ public class Game {
         player.addToHp(10);
         player.addToStrength(1);
         player.addToGold(10);
+        in.nextLine();
     }
 
 
@@ -63,7 +93,7 @@ public class Game {
 
     public boolean maze(int room, int option) {
 
-        Scanner in = new Scanner(System.in);
+
         String answer;
         int op = 0;
         boolean win, check;

@@ -13,6 +13,7 @@ public abstract class HeroItems {
     public HeroItems(String name, int price, ArrayList heroType){
         this.name = name;
         this.price = price;
+        this.heroType = heroType;
     }
 
 

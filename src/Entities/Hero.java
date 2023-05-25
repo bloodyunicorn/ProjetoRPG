@@ -56,7 +56,16 @@ public abstract class Hero extends Entity{
     }
 
     public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
+
+        if (this.weapon==null){
+            this.weapon = weapon;
+            addToStrength(weapon.getAttack());
+        } else {
+            takeFromStrength(this.weapon.getAttack());
+            this.weapon = weapon;
+            addToStrength(weapon.getAttack());
+        }
+
     }
 
     public ArrayList<Potion> getPotion() {
