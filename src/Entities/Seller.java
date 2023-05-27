@@ -30,7 +30,7 @@ public class Seller {
 
             if(i.toString().equals(player.getClass().getSimpleName().toUpperCase())){
                 verifyHeroType = true;
-
+                break;
             }
         }
 
@@ -116,5 +116,5 @@ public class Seller {
         System.out.println("Maybe next time.");
 
     }
-    public static Seller seller = new Seller();
+
 }

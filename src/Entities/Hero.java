@@ -15,6 +15,7 @@ public abstract class Hero extends Entity{
         super(name);
         this.gold =gold;
 
+
     }
     public Hero(String name, double hp, double strength, int gold){
         super(name, hp, strength);
@@ -55,15 +56,15 @@ public abstract class Hero extends Entity{
         return weapon;
     }
 
-    public void setWeapon(Weapon weapon) {
+    public void setWeapon(Weapon weaponToReplace) {
 
         if (this.weapon==null){
-            this.weapon = weapon;
-            addToStrength(weapon.getAttack());
+            this.weapon = weaponToReplace;
+            this.addToStrength(weapon.getAttack());
         } else {
             takeFromStrength(this.weapon.getAttack());
-            this.weapon = weapon;
-            addToStrength(weapon.getAttack());
+            this.weapon = weaponToReplace;
+            this.addToStrength(weapon.getAttack());
         }
 
     }
@@ -76,6 +77,21 @@ public abstract class Hero extends Entity{
         this.potion = potion;
     }
 
+    public void printPotions(){
+        int option = 0;
+        for (Potion i: potion){
+
+            option++;
+            System.out.print(option + " - ");
+            System.out.print(i.getName() + " ---> "+i.getHeal() + "HP\n");
+
+        }
+    }
+    public void takePotion(int op){
+        addToHp(this.potion.get(op).getHeal());
+        this.potion.remove(op);
+
+    }
     public void addToPotions(Potion potionToAdd){
         potion.add(potionToAdd);
     }
@@ -89,7 +105,7 @@ public abstract class Hero extends Entity{
     public void setLevel(int level) {
         this.level = level;
     }
-    public void increaseLevel(){
+    public void levelUp(){
         this.level++;
         System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Level up" + ConsoleColors.RESET);
     }

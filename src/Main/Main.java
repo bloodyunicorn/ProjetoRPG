@@ -126,10 +126,8 @@ public class Main {
             in.nextLine();
 
 
-                
 
-
-            int room=0, option = 0;
+            int room=0, option = 1;
             Game game = new Game(player);
             boolean win = game.maze(room, option);
 

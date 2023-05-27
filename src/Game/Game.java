@@ -18,17 +18,17 @@ public class Game {
     public Game(Hero player) {
 
         this.player = player;
-        Seller.seller.addItems(mjolnir);
-        Seller.seller.addItems(bladesOfChaos);
-        Seller.seller.addItems(sword);
-        Seller.seller.addItems(scorpionCharm);
-        Seller.seller.addItems(echoes);
-        Seller.seller.addItems(talisman);
-        Seller.seller.addItems(talonBow);
-        Seller.seller.addItems(bow);
-        Seller.seller.addItems(arch);
-        Seller.seller.addItems(hp);
-        Seller.seller.addItems(superHp);
+        seller.addItems(mjolnir);
+        seller.addItems(bladesOfChaos);
+        seller.addItems(sword);
+        seller.addItems(scorpionCharm);
+        seller.addItems(echoes);
+        seller.addItems(talisman);
+        seller.addItems(talonBow);
+        seller.addItems(bow);
+        seller.addItems(arch);
+        seller.addItems(hp);
+        seller.addItems(superHp);
         archerItems.add(ItemHeroType.ARCHER);
         knightItems.add(ItemHeroType.KNIGHT);
         mageItems.add(ItemHeroType.MAGE);
@@ -38,6 +38,7 @@ public class Game {
 
     }
 
+    public static Seller seller = new Seller();
 
     Weapon mjolnir = new Weapon("Mjölnir", 130, knightItems , 60);
     Weapon bladesOfChaos = new Weapon("Blades Of Chaos", 50, knightItems ,35);
@@ -55,9 +56,6 @@ public class Game {
     public static ArrayList<ItemHeroType> knightItems = new ArrayList<>();
     public static ArrayList<ItemHeroType> mageItems = new ArrayList<>();
     public static ArrayList<ItemHeroType> allTypeItems = new ArrayList<>();
-
-
-
 
 
     public boolean fight(NPC enemy) {
@@ -81,15 +79,12 @@ public class Game {
     }
 
     public void wonTheBattle(){
-        player.increaseLevel();
+        player.levelUp();
         player.addToHp(10);
         player.addToStrength(1);
         player.addToGold(10);
         in.nextLine();
     }
-
-
-
 
     public boolean maze(int room, int option) {
 
@@ -102,7 +97,7 @@ public class Game {
             case 1:
                     System.out.println("'Hello good traveller, I'm just a humble seller walking by.\nLet me show you what I have here?'\n");
 
-                    Seller.seller.selling(player);
+                    seller.selling(player);
 
                     maze(option, 2);
 
@@ -145,8 +140,6 @@ public class Game {
 
                     System.out.println("***** The Man with the Mustache *****");
 
-
-
                     win = fight(NPC.bowser);
 
                     if (!win){
@@ -171,7 +164,7 @@ public class Game {
                 System.out.println("'What's that???'");
                 System.out.println("Looks like someone is following you.\nYou run towards him and find out it is a man with a big mustache.");
                 System.out.println("This man tries to run but with no chance and you ask him why he was following you.");
-                System.out.println("'I'm sorry, I didn't mean to bother you. I've heard that you are looking for the Goblet of fire, and maybe i can help you. I just need a favour in exchange. \nWould you like to hear it? (Y/N)");
+                System.out.println("'I'm sorry, I didn't mean to bother you. I've heard that you are looking for the Goblet of fire, and maybe i can help you. I just need a favour in exchange. \nWould you like to help me? (Y/N)");
 
                 System.out.println();
                 answer = in.nextLine();
@@ -210,6 +203,13 @@ public class Game {
                         System.out.println("Since you don't know how to press the right letter, we will choose for you.");
                         op = 7;
                     }
+
+                    win = fight(NPC.bowser);
+
+                    if (!win){
+                        return false;
+                    }
+
                     maze(option, op);
                     break;
             case 6:
@@ -266,6 +266,7 @@ public class Game {
                     System.out.println("Since you don't know how to press the right letter, we will choose for you.");
                     op = 9;
                 }
+
                 maze(option, op);
                 break;
             case 9:
@@ -322,11 +323,16 @@ public class Game {
                         wonTheBattle();
                         player.showDetails();
 
-                        maze(12, 1);
-                        break;
+                    if (!win){
+                        return false;
+                    }
+
+                    maze(12, 1);
+                    break;
+
             default:
                 System.out.println("Seller: 'Hello again!'");
-                Seller.seller.selling(player);
+                seller.selling(player);
 
                 maze(option, 9);
         }

@@ -11,6 +11,15 @@ public class Potion extends HeroItems {
         this.heal = heal;
     }
 
+    @Override
+    public void showDetails() {
+        System.out.println("Name: " + this.getName());
+        System.out.println("Heal: " + this.heal);
+        System.out.println("Hero types: ");
+        for (ItemHeroType i : this.getHeroType()){
+            System.out.print(i);
+        }
+    }
 
     public int getHeal() {
         return heal;

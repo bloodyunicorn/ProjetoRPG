@@ -16,7 +16,7 @@ public abstract class HeroItems {
         this.heroType = heroType;
     }
 
-
+    public abstract void showDetails();
     public ArrayList<ItemHeroType> getHeroType() {
         return heroType;
     }

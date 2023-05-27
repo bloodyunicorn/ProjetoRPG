@@ -16,6 +16,16 @@ public class Weapon extends HeroItems{
 
     }
 
+    @Override
+    public void showDetails() {
+        System.out.println("Name: " + this.getName());
+        System.out.println("Damage: " + this.getAttack());
+        System.out.println("Hero types: ");
+        for (ItemHeroType i : this.heroTypes){
+            System.out.print(i);
+        }
+    }
+
     public int getAttack() {
         return attack;
     }
