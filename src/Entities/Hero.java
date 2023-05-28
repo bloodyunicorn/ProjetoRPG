@@ -6,7 +6,7 @@ import Main.ConsoleColors;
 
 public abstract class Hero extends Entity{
 
-    private int level;
+    private int level=1;
     private int gold;
     private Weapon weapon;
     private ArrayList<Potion> potion = new ArrayList<Potion>();

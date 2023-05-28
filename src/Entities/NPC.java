@@ -37,7 +37,8 @@ public class NPC extends Entity{
     }
     public static NPC karen = new NPC("Wild Karen", 50, 5);
     public static NPC balrog = new NPC("Devious Balrog", 120, 50);
-    public static NPC cereberus = new NPC("Cerberus", 100, 30);
     public static NPC bowser = new NPC("Bowser", 80, 20);
     public static NPC ogre = new NPC("Ogre", 60, 40);
+    public static NPC dd = new NPC("Ogre", 60, 40);
+    public static NPC odddgre = new NPC("Ogre", 60, 40);
 }

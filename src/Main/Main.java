@@ -11,7 +11,7 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
 
-       /* Knight test = new Knight("xxx", 20);
+        /*Knight test = new Knight("xxx", 20);
         test.setStrength(40);
         test.setHp(80);
         Game test1 = new Game(test);
@@ -24,7 +24,7 @@ public class Main {
         System.out.print("Please, enter your name: ");
         String name = in.nextLine();
 
-        boolean valid = true, tryAgain = true;
+        boolean valid = true, tryAgain = false;
         int gold = 0, points = 0;
         double strength = 0, hp = 0;
 
@@ -36,16 +36,16 @@ public class Main {
                 System.out.print("\nWhat kind of Hero are you?\n");
                 System.out.println("1 - Fearless Knight\n2 - Wise Mage\n3 - Agile Archer ");
                 System.out.print("\n-> ");
-                int hero = in.nextInt();
+                char hero = in.next().charAt(0);
 
                 switch (hero) {
-                    case 1:
+                    case '1':
                         player = new Knight(name, gold);
                         break;
-                    case 2:
+                    case '2':
                         player = new Mage(name, gold);
                         break;
-                    case 3:
+                    case '3':
                         player = new Archer(name, gold);
                         break;
                     default:
@@ -81,7 +81,7 @@ public class Main {
                 }
             } while (!valid);
 
-            System.out.println("\nPlease distribute " + ConsoleColors.YELLOW_UNDERLINED + points + "points" + ConsoleColors.RESET + " between HP and Strength. \nEach 5 points wil increase Strength by 1 or HP by 5.");
+            System.out.println("\nPlease distribute " + ConsoleColors.YELLOW_UNDERLINED + points + " points" + ConsoleColors.RESET + " between HP and Strength. \nEach 5 points will increase Strength by 1 or HP by 5.\n");
 
             String confirm;
 
@@ -101,10 +101,15 @@ public class Main {
                 strength = tempPoints / 5;
                 System.out.println("Points to Strenght: " + strength);
 
+                do{
 
-                System.out.println("Is this right? (Y/N)");
-                confirm = in.next();
-                confirm = confirm.toUpperCase();
+
+                    System.out.println("\nIs this right? (Y/N)");
+                    confirm = in.next();
+                    confirm = confirm.toUpperCase();
+
+
+                }while (!confirm.equals("N") && !confirm.equals("Y"));
 
             } while (confirm.equals("N"));
 
@@ -122,13 +127,14 @@ public class Main {
             in.nextLine();
             System.out.println("We will give you " + gold + " golden coins to begin your journey.\n");
             in.nextLine();
-            System.out.println("The Lord of Light wishes you the best fortune in your adventure!");
+            System.out.println("The Lord of Light wishes you the best fortune in your adventure!\n");
             in.nextLine();
 
 
 
             int room=0, option = 1;
             Game game = new Game(player);
+
             boolean win = game.maze(room, option);
 
 
@@ -145,6 +151,8 @@ public class Main {
                     tryAgain = true;
                 }
 
+            } else {
+                System.out.println("VICTORY");
             }
 
         }while(tryAgain == true);
