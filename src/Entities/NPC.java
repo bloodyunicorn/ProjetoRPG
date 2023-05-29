@@ -8,6 +8,9 @@ public class NPC extends Entity{
         super(name,hp,strength);
     }
 
+    /**
+     * mostra detalhes NPC
+     */
 
     @Override
     public void showDetails() {
@@ -16,6 +19,11 @@ public class NPC extends Entity{
         System.out.println("HP: " + super.getHp());
         System.out.println("Strength: " + super.getStrength());
     }
+
+    /**
+     * ataca o heroi
+     * @param player
+     */
     public void attack(Hero player){
 
         double damage = 0;
@@ -35,10 +43,11 @@ public class NPC extends Entity{
         player.setHp(playerHp);
 
     }
-    public static NPC karen = new NPC("Wild Karen", 50, 5);
-    public static NPC balrog = new NPC("Devious Balrog", 120, 50);
-    public static NPC bowser = new NPC("Bowser", 80, 20);
+    public static NPC karen = new NPC("Wild Karen", 30, 5);
+    public static NPC alghoul = new NPC("Alghoul", 110, 50);
+    public static NPC balrog = new NPC("Devious Balrog", 160, 80);
+    public static NPC bowser = new NPC("Bowser", 80, 30);
     public static NPC ogre = new NPC("Ogre", 60, 40);
-    public static NPC dd = new NPC("Ogre", 60, 40);
-    public static NPC odddgre = new NPC("Ogre", 60, 40);
+    public static NPC witch = new NPC("Evil Witch", 50, 30);
+
 }

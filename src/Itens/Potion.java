@@ -6,11 +6,23 @@ public class Potion extends HeroItems {
 
     private int heal = 0;
 
+
+    /**
+     * costrutor
+     * @param name
+     * @param heal
+     * @param heroTypes
+     * @param price
+     */
+
     public  Potion(String name, int heal, ArrayList heroTypes, int price){
         super(name, price, heroTypes);
         this.heal = heal;
     }
 
+    /**
+     * mostra detalhes da poção
+     */
     @Override
     public void showDetails() {
         System.out.println("Name: " + this.getName());

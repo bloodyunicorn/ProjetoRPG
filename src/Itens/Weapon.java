@@ -8,6 +8,13 @@ public class Weapon extends HeroItems{
     private ArrayList<ItemHeroType> heroTypes;
 
 
+    /**
+     * construtor
+     * @param name
+     * @param attack
+     * @param allTypeItems
+     * @param price
+     */
     public  Weapon(String name, int attack, ArrayList allTypeItems, int price){
 
         super(name, price, allTypeItems);
@@ -16,6 +23,9 @@ public class Weapon extends HeroItems{
 
     }
 
+    /**
+     * mostra detalhes
+     */
     @Override
     public void showDetails() {
         System.out.println("Name: " + this.getName());

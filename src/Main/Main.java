@@ -32,10 +32,13 @@ public class Main {
 
         do {
             do {
+
                 valid = true;
+
                 System.out.print("\nWhat kind of Hero are you?\n");
                 System.out.println("1 - Fearless Knight\n2 - Wise Mage\n3 - Agile Archer ");
                 System.out.print("\n-> ");
+
                 char hero = in.next().charAt(0);
 
                 switch (hero) {
@@ -52,8 +55,8 @@ public class Main {
                         System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "\nInvalid choice!" + ConsoleColors.RESET);
                         valid = false;
                         break;
-
                 }
+
             } while (!valid);
 
             do {
@@ -74,14 +77,15 @@ public class Main {
                         points = 220;
                         break;
                     default:
-
                         System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "\nInvalid choice!" + ConsoleColors.RESET);
                         valid = false;
                         break;
                 }
+
             } while (!valid);
 
-            System.out.println("\nPlease distribute " + ConsoleColors.YELLOW_UNDERLINED + points + " points" + ConsoleColors.RESET + " between HP and Strength. \nEach 5 points will increase Strength by 1 or HP by 5.\n");
+            System.out.println("\nPlease distribute " + ConsoleColors.YELLOW_UNDERLINED + points + " points"
+                    + ConsoleColors.RESET + " between HP and Strength. \nEach 5 points will increase Strength by 1 or HP by 5.\n");
 
             String confirm;
 
@@ -132,11 +136,12 @@ public class Main {
 
 
 
+            boolean win;
             int room=0, option = 1;
             Game game = new Game(player);
 
-            boolean win = game.maze(room, option);
 
+            win = game.maze(room, option);
 
             if (!win) {
                 System.out.println("GAME OVER");

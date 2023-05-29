@@ -8,6 +8,12 @@ import java.util.ArrayList;
 public class Archer extends Hero {
 
     private double nerf;
+
+    /**
+     * construtor
+     * @param name
+     * @param gold
+     */
     public Archer(String name, int gold){
         super(name,gold);
 

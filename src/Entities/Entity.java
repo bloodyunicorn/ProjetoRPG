@@ -13,6 +13,12 @@ abstract class Entity {
         this.name =name;
     }
 
+    /**
+     * Construtor
+     * @param name
+     * @param hp
+     * @param strength
+     */
     public Entity(String name, double hp, double strength){
         this.name = name;
         this.hp = hp;
@@ -39,10 +45,20 @@ abstract class Entity {
     public double getStrength(){
         return strength;
     }
+
+    /**
+     * adiciona força
+     * @param strength
+     */
     public void addToStrength(int strength){
         this.setStrength(this.strength + strength);
         System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "+ " + strength + "pts of Strength" + ConsoleColors.RESET);
     }
+
+    /**
+     * tira força
+     * @param strength
+     */
     public void takeFromStrength(double strength){
         this.setStrength(this.strength - strength);
     }

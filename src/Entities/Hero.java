@@ -22,6 +22,10 @@ public abstract class Hero extends Entity{
         this.gold =gold;
 
     }
+
+    /**
+     * mostra nome, hp, força , nivel e ouro
+     */
     @Override
     public void showDetails() {
         System.out.println(ConsoleColors.PURPLE_UNDERLINED + "\nHero Details" + ConsoleColors.RESET);
@@ -46,7 +50,9 @@ public abstract class Hero extends Entity{
     }
 
     public void addToGold(int gold){
+
         this.setGold(this.gold + gold);
+        System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT + "+ " + gold + " golden coins" + ConsoleColors.RESET);
     }
     public void takeFromGold(int gold){
         this.setGold(this.gold - gold);
@@ -56,6 +62,10 @@ public abstract class Hero extends Entity{
         return weapon;
     }
 
+    /**
+     * substitui a arma, aumenta a força do heroi e retira a força da arma anterior
+     * @param weaponToReplace
+     */
     public void setWeapon(Weapon weaponToReplace) {
 
         if (this.weapon==null){
@@ -77,24 +87,43 @@ public abstract class Hero extends Entity{
         this.potion = potion;
     }
 
+    /**
+     * Imprime poções
+     */
     public void printPotions(){
         int option = 0;
+        System.out.println("Your potions:");
         for (Potion i: potion){
 
             option++;
             System.out.print(option + " - ");
-            System.out.print(i.getName() + " ---> "+i.getHeal() + "HP\n");
+            System.out.print(i.getName() + " ---> "+i.getHeal() + "HP\n\n");
 
         }
     }
-    public void takePotion(int op){
+
+    /**
+     * toma poção
+     * @param op
+     */
+    public void takePotion(int op) {
+
         addToHp(this.potion.get(op).getHeal());
         this.potion.remove(op);
 
     }
+
+    /**
+     * adiciona poção
+     * @param potionToAdd
+     */
     public void addToPotions(Potion potionToAdd){
         potion.add(potionToAdd);
     }
+
+    /**
+     *         mostra poçoes disponiveis
+     */
     public void printItems(){
         System.out.println("\nPotions available: \n");
 
@@ -105,11 +134,19 @@ public abstract class Hero extends Entity{
     public void setLevel(int level) {
         this.level = level;
     }
+
+    /**
+     * aumenta de nivel
+     */
     public void levelUp(){
         this.level++;
         System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Level up" + ConsoleColors.RESET);
     }
 
+    /**
+     * ataca o NPC
+     * @param npc
+     */
     public void attack(NPC npc){
 
         double enemyHp = npc.getHp();
