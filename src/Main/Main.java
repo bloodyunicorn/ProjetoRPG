@@ -35,8 +35,8 @@ public class Main {
 
                 valid = true;
 
-                System.out.print("\nWhat kind of Hero are you?\n");
-                System.out.println("1 - Fearless Knight\n2 - Wise Mage\n3 - Agile Archer ");
+                System.out.print("\nWhat kind of Hero are you?\n\n");
+                System.out.println(ConsoleColors.WHITE_BOLD_BRIGHT + "1 - Fearless Knight\n2 - Wise Mage\n3 - Agile Archer " + ConsoleColors.RESET);
                 System.out.print("\n-> ");
 
                 char hero = in.next().charAt(0);

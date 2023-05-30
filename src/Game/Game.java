@@ -212,6 +212,7 @@ public class Game {
                     System.out.println("Since you don't know how to press the right letter, we will choose for you.");
                     in.nextLine();
                     System.out.println("You thank her generosity, but decline. After all, you travel Han.\nShe smiles and winks at you, wishing you good fortune as she rides away.");
+                    in.nextLine();
                     op = 4;
                 }
                 maze(option, op);
@@ -262,7 +263,7 @@ public class Game {
                 System.out.println("'Who?' You try to ask between her mad ramblings, but it's hopeless to argue against her.\nSo you take the most sensible action, fight her.");
                 in.nextLine();
                 NPC.karen.showDetails();
-                in.nextLine();
+
                 win = fight(NPC.karen);
                 if (!win) {
                     break;
@@ -304,6 +305,7 @@ public class Game {
                 }
                 System.out.println("Would you like to equip it? (Y/N)");
                 answer = in.nextLine();
+                answer = answer.toUpperCase();
 
                 if (answer.equals("Y")) {
                     player.setWeapon((Weapon)x);
@@ -337,15 +339,17 @@ public class Game {
                 } else {
                     System.out.println("'Oh you are very wise! I admire your wisdom.");
                 }
-                System.out.println("She says this as she smiles at you. Her eyes are fixed on yours. Suddenly, the world seems to fade away behind her eyes and her smile.");
+                System.out.println("She says this as she smiles at you. Her eyes are fixed on yours. \nSuddenly, the world seems to fade away behind her eyes and her smile.");
                 in.nextLine();
                 if (player instanceof Mage) {
                     System.out.println("SHE'S TRYING TO BEWITCH YOU!");
+                    in.nextLine();
                     System.out.println("Of course she can't. Her magic has no hold over you, as you already have control over magic yourself.");
                     in.nextLine();
                     System.out.println("With a few mumbled words, you counter her spell. The veil falls instantly, and you see her as the old, wrinkled witch that she really is.");
                 } else {
                     System.out.println("You feel drawn to her. Almost falling into a black hole of bliss.");
+                    in.nextLine();
                     System.out.println("Suddenly, the carriage rolls over a large rock, shaking you and making you bang your head against it.");
                     in.nextLine();
                     System.out.println("You wake up from the trance and see her as the old, wrinkled witch that she really is.");
@@ -356,6 +360,7 @@ public class Game {
                 System.out.println("Ready? Fight!");
                 NPC.witch.showDetails();
                 win = fight(NPC.witch);
+                in.nextLine();
                 if (!win) {
                     break;
                 }
@@ -363,7 +368,7 @@ public class Game {
                 in.nextLine();
                 wonTheBattle();
                 System.out.println("As you step away, you notice something that has fallen from the carriage during the fight...");
-                System.out.println("You pick it up, it's a Potion!");
+                System.out.println("You pick it up, it's a Potion!\n");
                 player.addToPotions(miniHp);
                 in.nextLine();
                 player.showDetails();
@@ -374,10 +379,12 @@ public class Game {
             case 7 -> {
                 System.out.println("Welcome to Temeria.");
                 System.out.println("\nAs you arrive, the townfolk start to notice you. They already know what you are looking for.");
+                in.nextLine();
                 System.out.println("You need to look around and find someone to point you to the right direction.\n\n.\n.\n.\n\n");
                 in.nextLine();
 
                 System.out.println("Looks like someone is following you.\nYou run towards him and find out it is a man with a big moustache.");
+                in.nextLine();
                 System.out.println("This man tries to run but with no chance and you ask him why he was following you.");
                 in.nextLine();
                 System.out.println("'I'm sorry, I don't mean to bother you. \nI've heard that you are looking for the Goblet of fire, and maybe i can help you. I just need a favour in exchange. \nCould you help me? (Y/N)");
@@ -409,12 +416,15 @@ public class Game {
             }
             case 8 -> {
                 System.out.println("'Thank you! Quickly, come, there's no time to lose.' he says as he grabs your arm, and pulls you down a pipe.");
-                System.out.println("You find yourself in an underground sewer system. The man with the moustache guides you through the tunnels as he steps on mushrooms growing in the floor.");
+                in.nextLine();
+                System.out.println("You find yourself in an underground sewer system. \nThe man with the moustache guides you through the tunnels as he steps on mushrooms growing in the floor.");
                 in.nextLine();
                 System.out.println("He explains his fiancee, 'the Princess' he calls her (so formal for a fiancee...), has been kidnapped... by a turtle with teeth.");
+                in.nextLine();
                 System.out.println("In exchange for your help, he promises to guide you through a shortcut towards Balrog and your quest for the Goblet of Fire.");
                 in.nextLine();
                 System.out.println("You reach a large room, in the center is a Giant Turtle with Teeth, watching you approach. Behind it is a girl, the Princess, tied up. 'Oh save me!' she speaks.");
+                in.nextLine();
                 System.out.println("The man with the moustache leaps forward but is trapped in a cage. It's up to you now!");
                 in.nextLine();
                 NPC.bowser.showDetails();
@@ -430,10 +440,11 @@ public class Game {
                 player.showDetails();
                 potion();
 
-                System.out.println("'Thank you for your help. As promised, I'll send you to the right way to find the Devious Balrog! \nGo to the woods, there's a short cut. You will find a waterfall where he passed by not long ago.\nTake these coins, I have a lot of these, I hope they help you in your journey!' ");
+                System.out.println("'Thank you for your help. As promised, I'll send you to the right way to find the Devious Balrog! \nGo to the woods, there's a short cut. You will find a waterfall where he passed by not long ago.\nTake these coins, I have a lot of these, I hope they help you in your journey!' \n");
                 player.addToGold(10);
                 in.nextLine();
                 System.out.println("You all climb out of the sewers back into the city through a staircase that opened just after you defeated the giant turtle.");
+                in.nextLine();
                 System.out.println("The man with the moustache and the Princess hop onto a weird dragon-like creature with big eyes, and they run away towards the horizon.");
                 in.nextLine();
                 System.out.println("You resume your journey back towards the forest, thinking of ways to spend this newfound gold. And right on queue, there's the salesman, it's like he knows you have coins to spend.");
@@ -448,11 +459,13 @@ public class Game {
                 in.nextLine();
                 System.out.println("'Hello.' it says. Why it speaks, you don't know, but it does.");
                 System.out.println("'Hello.' you reply, unsure of yourself.");
+                in.nextLine();
                 System.out.println("The unicorn is please at your good manners. His eyes shine towards you as his horns shines brightly, nearly blinding you!");
                 in.nextLine();
                 player.addToStrength(10);
                 in.nextLine();
                 System.out.println("When you can finally see again you feel stronger, but exhausted, and the unicorn is gone.");
+                in.nextLine();
                 System.out.println("You're left wondering what happened. But that's all you can do, wonder.");
                 in.nextLine();
                 System.out.println("You notice the sun has nearly set. Will you rest through the night (R) or will you push on at the Balrog feeling it's close (C)?.");
@@ -461,6 +474,7 @@ public class Game {
                 answer = answer.toUpperCase();
                 if (answer.equals("C")) {
                     System.out.println("You're nearly there. The Balrog's lair is near, you can feel its stench.");
+                    in.nextLine();
                     System.out.println("As you turn around a large rock you see it.");
                     in.nextLine();
                     op = 12;
@@ -516,7 +530,7 @@ public class Game {
                     System.out.println("Wrong, you drink it, otherwise why even mention it?");
                 } else {
                     if (!answer.equals("D")) {
-                        System.out.println("Since you don't know how to press the right letter, unlucky for you we are unforgiving gods. You died.\n So close to the end too...");
+                        System.out.println("Since you don't know how to press the right letter, unlucky for you we are unforgiving gods. You died.\n So close to the end too...\n");
                         break;
                     }
                 }

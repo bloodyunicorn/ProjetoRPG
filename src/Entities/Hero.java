@@ -78,6 +78,7 @@ public abstract class Hero extends Entity{
             this.addToStrength(weapon.getAttack());
         }
 
+
     }
 
     public ArrayList<Potion> getPotion() {
