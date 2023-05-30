@@ -145,20 +145,20 @@ public class Main {
 
             if (!win) {
                 System.out.println("GAME OVER");
-
-                System.out.println("Would you like to try again? (Y/N)");
-                String ans = in.next();
-                ans = ans.toUpperCase();
-
-                if( ans.equals("N")){
-                    tryAgain = false;
-                } else {
-                    tryAgain = true;
-                }
-
             } else {
                 System.out.println("VICTORY");
             }
+
+            System.out.println("Would you like to play again? (Y/N)");
+            String ans = in.next();
+            ans = ans.toUpperCase();
+
+            if( ans.equals("N")){
+                tryAgain = false;
+            } else {
+                tryAgain = true;
+            }
+
 
         }while(tryAgain);
     }

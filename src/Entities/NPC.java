@@ -4,8 +4,10 @@ import Main.ConsoleColors;
 
 public class NPC extends Entity{
 
+    public int initialHp;
     public NPC(String name, int hp, int strength){
         super(name,hp,strength);
+        initialHp = hp;
     }
 
     /**
@@ -20,6 +22,12 @@ public class NPC extends Entity{
         System.out.println("Strength: " + super.getStrength());
     }
 
+    /**
+     * reset hp NPC
+     */
+    public void reset(){
+        setHp(initialHp);
+    }
     /**
      * ataca o heroi
      * @param player

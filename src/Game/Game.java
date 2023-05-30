@@ -16,6 +16,7 @@ public class Game {
     Scanner in = new Scanner(System.in);
     Hero player;
 
+    boolean win = true;
     /**
      * construtor que adiciona itens ao vendedor e aos arrays de tipo de heroi
      * @param player
@@ -26,6 +27,7 @@ public class Game {
         if (!seller.getItems().isEmpty()) {
 
             seller.getItems().removeAll(seller.getItems());
+
         }
         seller.addItems(mjolnir);
         seller.addItems(bladesOfChaos);
@@ -50,12 +52,12 @@ public class Game {
 
     public static Seller seller = new Seller();
 
-    public static NPC karen = new NPC("Wild Karen", 30, 5);
-    public static NPC alghoul = new NPC("Alghoul",120 , 35);
-    public static NPC balrog = new NPC("Devious Balrog", 200, 60);
-    public static NPC bowser = new NPC("Bowser", 100, 30);
-    public static NPC ogre = new NPC("Ogre", 60, 40);
-    public static NPC witch = new NPC("Evil Witch", 50, 20);
+    NPC karen = new NPC("Wild Karen", 30, 5);
+    NPC alghoul = new NPC("Alghoul",120 , 35);
+    NPC balrog = new NPC("Devious Balrog", 200, 60);
+    NPC bowser = new NPC("Bowser", 100, 30);
+    NPC ogre = new NPC("Ogre", 60, 40);
+    NPC witch = new NPC("Evil Witch", 50, 20);
     Weapon mjolnir = new Weapon("Mjölnir", 130, knightItems , 60);
     Weapon bladesOfChaos = new Weapon("Blades Of Chaos", 50, knightItems ,35);
     Weapon sword = new Weapon("Sword", 15, knightItems,20);
@@ -84,10 +86,12 @@ public class Game {
      */
     public boolean fight(NPC enemy) {
 
+        enemy.reset();
         System.out.println();
         if (player instanceof Knight) {
             enemy.attack(player);
             if (player.getHp() <= 0) {
+                System.out.println("You have died. The enemy was too strong for you.");
                 return false;
             }
         }
@@ -99,6 +103,7 @@ public class Game {
             }
             enemy.attack(player);
             if (player.getHp() <= 0) {
+                System.out.println("You have died. The enemy was too strong for you.");
                 return false;
             }
         }
@@ -172,7 +177,6 @@ public class Game {
 
         String answer;
         int op = 0;
-        boolean win = true, check;
 
         switch (option) {
             case 1 -> {
@@ -180,7 +184,7 @@ public class Game {
                 in.nextLine();
                 seller.selling(player);
                 maze(option, 2);
-                return false;
+                break;
             }
             case 2 -> {
                 System.out.println("And thus your journey begins!");
@@ -193,6 +197,7 @@ public class Game {
 
                 System.out.println("It doesn't give you a chance. Fight or die!");
                 in.nextLine();
+                ogre.showDetails();
                 win = fight(ogre);
                 if (!win) {
                     break;
@@ -326,14 +331,11 @@ public class Game {
                 answer = in.nextLine();
                 answer = answer.toUpperCase();
                 if (answer.equals("C")) {
-                    op = 7;//village
+                    op = 7;
                 } else if (answer.equals("S")) {
-                    player.showDetails();
                     op = 10;
                 } else {
                     System.out.println("Since you don't know how to press the right letter, we will choose for you.");
-                    in.nextLine();
-                    player.showDetails();
                     in.nextLine();
                     op = 10;
                 }
@@ -529,7 +531,7 @@ public class Game {
                 System.out.println("Turning a corner in a rock, you could not be more right, there it is, it's lair.");
                 System.out.println("But you realize, the entrance you're facing is not guarded. It seems forgotten.");
                 in.nextLine();
-                System.out.println("Fortune favors you! You notice a vial of a strange elixir just lying in your path. Do you drink it " +ConsoleColors.WHITE_BOLD_BRIGHT +"(D)" + ConsoleColors.RESET+" or leave it on the ground "+ConsoleColors.WHITE_BOLD_BRIGHT +"(L)"+ConsoleColors.RESET+"?");
+                System.out.println("Fortune favors you! You notice a vial of a strange elixir just lying in your path.\nDo you drink it " +ConsoleColors.WHITE_BOLD_BRIGHT +"(D)" + ConsoleColors.RESET+" or leave it on the ground "+ConsoleColors.WHITE_BOLD_BRIGHT +"(L)"+ConsoleColors.RESET+"?");
 
                 answer = in.nextLine();
                 answer = answer.toUpperCase();
@@ -537,7 +539,7 @@ public class Game {
                     System.out.println("Wrong, you drink it, otherwise why even mention it?");
                 } else {
                     if (!answer.equals("D")) {
-                        System.out.println("Since you don't know how to press the right letter, unlucky for you we are unforgiving gods. You died.\n So close to the end too...\n");
+                        System.out.println("Since you don't know how to press the right letter, unlucky for you we are unforgiving gods. You died.\nSo close to the end too...\n");
                         break;
                     }
                 }
@@ -570,7 +572,7 @@ public class Game {
                 System.out.println("The Goblet of Fire is yours at last! You appreciate it, having fulfilled your quest (the thought of being 2000 gold coins richer also helps).");
                 System.out.println("Happiness will come back to your hometown, thanks to you! Congratulations!");
                 in.nextLine();
-                break;
+
             }
             default -> {
                 System.out.println("\nSalesman: 'Hello again!'\n");
@@ -578,7 +580,7 @@ public class Game {
                 maze(0, room + 1);
             }
         }
-        return true;
+        return win;
 
     }
 }
