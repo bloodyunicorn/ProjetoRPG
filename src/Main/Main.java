@@ -24,7 +24,7 @@ public class Main {
         System.out.print("Please, enter your name: ");
         String name = in.nextLine();
 
-        boolean valid = true, tryAgain = false;
+        boolean valid, tryAgain = false;
         int gold = 0, points = 0;
         double strength = 0, hp = 0;
 
@@ -68,18 +68,18 @@ public class Main {
                 mode = mode.toUpperCase();
 
                 switch (mode) {
-                    case "E":
+                    case "E" -> {
                         gold = 20;
                         points = 300;
-                        break;
-                    case "H":
+                    }
+                    case "H" -> {
                         gold = 15;
                         points = 220;
-                        break;
-                    default:
+                    }
+                    default -> {
                         System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "\nInvalid choice!" + ConsoleColors.RESET);
                         valid = false;
-                        break;
+                    }
                 }
 
             } while (!valid);
@@ -90,7 +90,7 @@ public class Main {
             String confirm;
 
             do {
-                int tempPoints = points;
+                double tempPoints = points;
 
                 do {
 
@@ -125,11 +125,11 @@ public class Main {
             in.nextLine();
             System.out.println("\nWe need your help to recover the stolen " + ConsoleColors.YELLOW + "Goblet of Fire." + ConsoleColors.RESET);
             in.nextLine();
-            System.out.println("It is very valuable to our community and we will pay you the amount of " + ConsoleColors.YELLOW_UNDERLINED + "*2000 golden coins*" + ConsoleColors.RESET + " if you bring it back from the hands of the Devious Balrog.");
+            System.out.println("It is very valuable to our community and we will pay you the amount of " + ConsoleColors.YELLOW_BOLD_BRIGHT + "2000 golden coins" + ConsoleColors.RESET + " if you bring it back from the hands of the Devious Balrog.");
             in.nextLine();
             System.out.println("But watch out! There will be dangers in your path, enemies to defeat and other perils to overcome.");
             in.nextLine();
-            System.out.println("We will give you " + gold + " golden coins to begin your journey.\n");
+            System.out.println("We will give you " + ConsoleColors.YELLOW_BOLD_BRIGHT + gold + " golden coins" + ConsoleColors.RESET + " to begin your journey.\n");
             in.nextLine();
             System.out.println("The Lord of Light wishes you the best fortune in your adventure!\n");
             in.nextLine();
@@ -160,6 +160,6 @@ public class Main {
                 System.out.println("VICTORY");
             }
 
-        }while(tryAgain == true);
+        }while(tryAgain);
     }
 }

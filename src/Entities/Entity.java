@@ -33,15 +33,12 @@ abstract class Entity {
 
     public void addToHp(int hp){
         setHp(this.hp + hp);
-        System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "+ " + hp + "HP" + ConsoleColors.RESET);
+        System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "+ " + hp + "HP" + ConsoleColors.RESET);
     }
     public void setStrength(double strength) {
         this.strength = strength;
     }
 
-    public void addToStrength(double strength) {
-        setStrength(this.strength+strength);
-    }
     public double getStrength(){
         return strength;
     }
@@ -52,7 +49,7 @@ abstract class Entity {
      */
     public void addToStrength(int strength){
         this.setStrength(this.strength + strength);
-        System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "+ " + strength + "pts of Strength" + ConsoleColors.RESET);
+        System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "+ " + strength + "pts of Strength" + ConsoleColors.RESET);
     }
 
     /**

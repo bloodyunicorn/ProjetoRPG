@@ -81,13 +81,14 @@ public class Seller {
         for (HeroItems i: items){
 
             option++;
-            System.out.print(option + " - ");
-            System.out.print(ConsoleColors.PURPLE_UNDERLINED + i.getName() + ConsoleColors.RESET + " ---> " + ConsoleColors.YELLOW_BOLD_BRIGHT + i.getPrice() + " golden coins " + ConsoleColors.RESET + "- Increases ");
+            System.out.print(option + " - " + ConsoleColors.PURPLE_UNDERLINED + i.getName() + ConsoleColors.RESET + " - Increases ");
             if (i instanceof Weapon){
-                System.out.print(((Weapon) i).getAttack() + " pts of "+ConsoleColors.RED_BOLD_BRIGHT + "Strength\n" + ConsoleColors.RESET);
+                System.out.print(((Weapon)i).getAttack() + " pts of "+ConsoleColors.RED_BOLD_BRIGHT + "Strength" + ConsoleColors.RESET);
             } else{
-                System.out.print(((Potion)i).getHeal() + ConsoleColors.GREEN_BOLD_BRIGHT + " HP\n" + ConsoleColors.RESET);
+                System.out.print(((Potion)i).getHeal() + ConsoleColors.GREEN_BOLD_BRIGHT + " HP" + ConsoleColors.RESET);
             }
+            System.out.print(" ---> " + ConsoleColors.YELLOW_BOLD_BRIGHT + i.getPrice() + " golden coins \n" + ConsoleColors.RESET);
+
 
         }
 

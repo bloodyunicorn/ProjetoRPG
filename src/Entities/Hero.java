@@ -29,7 +29,6 @@ public abstract class Hero extends Entity{
     @Override
     public void showDetails() {
         System.out.println(ConsoleColors.PURPLE_UNDERLINED + "\nHero Details" + ConsoleColors.RESET);
-        System.out.println("Name: " + super.getName());
         System.out.println("HP: " + super.getHp());
         System.out.println("Strength: " + super.getStrength());
         System.out.println("Level: " + this.level);
@@ -55,7 +54,9 @@ public abstract class Hero extends Entity{
         System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT + "+ " + gold + " golden coins" + ConsoleColors.RESET);
     }
     public void takeFromGold(int gold){
+
         this.setGold(this.gold - gold);
+        System.out.println(ConsoleColors.RED + "- " + gold + " golden coins" + ConsoleColors.RESET );
     }
 
     public Weapon getWeapon() {
@@ -97,7 +98,7 @@ public abstract class Hero extends Entity{
 
             option++;
             System.out.print(option + " - ");
-            System.out.print(i.getName() + " ---> "+i.getHeal() + "HP\n\n");
+            System.out.print(i.getName() + " ---> "+ConsoleColors.GREEN_BOLD_BRIGHT +i.getHeal() + "HP\n\n"+ ConsoleColors.RESET);
 
         }
     }
@@ -119,13 +120,14 @@ public abstract class Hero extends Entity{
      */
     public void addToPotions(Potion potionToAdd){
         potion.add(potionToAdd);
+        System.out.println(ConsoleColors.CYAN_BOLD_BRIGHT + potionToAdd.getName() + " added to your inventory." + ConsoleColors.RESET);
     }
 
     /**
      *         mostra poçoes disponiveis
      */
     public void printItems(){
-        System.out.println("\nPotions available: \n");
+        System.out.println(ConsoleColors.CYAN_BOLD_BRIGHT + "\nPotions available: \n" + ConsoleColors.RESET);
 
         for (Potion i: potion){
             System.out.println(i.getName());
@@ -152,7 +154,7 @@ public abstract class Hero extends Entity{
         double enemyHp = npc.getHp();
         enemyHp -= this.getStrength();
 
-        System.out.println("PUM");
+        System.out.println(ConsoleColors.GREEN + "PUM" + ConsoleColors.RESET);
         npc.setHp(enemyHp);
 
     }

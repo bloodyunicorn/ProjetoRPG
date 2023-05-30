@@ -30,9 +30,10 @@ public class Weapon extends HeroItems{
     public void showDetails() {
         System.out.println("Name: " + this.getName());
         System.out.println("Damage: " + this.getAttack());
-        System.out.println("Hero types: ");
+
+        System.out.print("Hero types: ");
         for (ItemHeroType i : this.heroTypes){
-            System.out.print(i);
+            System.out.print(" " + i);
         }
     }
 
