@@ -110,7 +110,7 @@ public class Seller {
 
             check = true;
 
-            System.out.println("\nWould you like to buy any of this items? (Y/N)");
+            System.out.println("\nWould you like to buy any of this items? " +ConsoleColors.WHITE_BOLD_BRIGHT +"(Y/N)"+ConsoleColors.RESET);
             String answer = in.nextLine();
             answer = answer.toUpperCase();
 
@@ -124,7 +124,7 @@ public class Seller {
                         int op = in.nextInt();
                         this.sellItem(op, player);
 
-                        System.out.println("\nAnything else? (Y/N)");
+                        System.out.println("\nAnything else? " +ConsoleColors.WHITE_BOLD_BRIGHT +"(Y/N)"+ConsoleColors.RESET);
 
                         String tempAnswer = in.next();
                         tempAnswer = tempAnswer.toUpperCase();

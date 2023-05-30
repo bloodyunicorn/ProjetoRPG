@@ -50,6 +50,12 @@ public class Game {
 
     public static Seller seller = new Seller();
 
+    public static NPC karen = new NPC("Wild Karen", 30, 5);
+    public static NPC alghoul = new NPC("Alghoul",120 , 35);
+    public static NPC balrog = new NPC("Devious Balrog", 200, 60);
+    public static NPC bowser = new NPC("Bowser", 100, 30);
+    public static NPC ogre = new NPC("Ogre", 60, 40);
+    public static NPC witch = new NPC("Evil Witch", 50, 20);
     Weapon mjolnir = new Weapon("Mjölnir", 130, knightItems , 60);
     Weapon bladesOfChaos = new Weapon("Blades Of Chaos", 50, knightItems ,35);
     Weapon sword = new Weapon("Sword", 15, knightItems,20);
@@ -99,6 +105,9 @@ public class Game {
             return true;
     }
 
+    /**
+     * verifica se tem poçoes e pergunta se quer utilizar
+     */
     public void potion(){
 
         boolean valid = true;
@@ -110,7 +119,7 @@ public class Game {
 
 
             do {
-                System.out.println("Would you like to use a potion? (Y/N)");
+                System.out.println("Would you like to use a potion? "+ConsoleColors.WHITE_BOLD_BRIGHT +"(Y/N)"+ConsoleColors.RESET);
                 char answer = in.next().charAt(0);
 
                 if (answer == ('Y') || answer == ('y')) {
@@ -184,7 +193,7 @@ public class Game {
 
                 System.out.println("It doesn't give you a chance. Fight or die!");
                 in.nextLine();
-                win = fight(NPC.ogre);
+                win = fight(ogre);
                 if (!win) {
                     break;
                 }
@@ -199,7 +208,7 @@ public class Game {
                 System.out.println("Horse footsteps catch your ear. You look and see a beautiful, country woman in a carriage.");
                 System.out.println("She seems friendly, smiles at you as both exchange pleasantries.");
                 in.nextLine();
-                System.out.println("'I'm going to Temeria, would you like a ride?' she asks you. (Y/N)");
+                System.out.println("'I'm going to Temeria, would you like a ride?' she asks you. "+ ConsoleColors.WHITE_BOLD_BRIGHT +"(Y/N)" + ConsoleColors.RESET);
                 answer = in.nextLine();
                 answer = answer.toUpperCase();
                 if (answer.equals("Y")) {
@@ -231,7 +240,7 @@ public class Game {
                 in.nextLine();
                 System.out.println("Thinking you don't notice, the woman begins waving her hand. Something sparkles out of it.");
                 in.nextLine();
-                System.out.println("Should you hop off and run away (R) or will you stay and continue the journey (C)?");
+                System.out.println("Should you hop off and run away " + ConsoleColors.WHITE_BOLD_BRIGHT + "(R)" + ConsoleColors.RESET + " or will you stay and continue the journey " + ConsoleColors.WHITE_BOLD_BRIGHT + "(C)?" + ConsoleColors.RESET);
                 answer = in.nextLine();
                 answer = answer.toUpperCase();
                 if (answer.equals("C")) {
@@ -262,9 +271,9 @@ public class Game {
                 in.nextLine();
                 System.out.println("'Who?' You try to ask between her mad ramblings, but it's hopeless to argue against her.\nSo you take the most sensible action, fight her.");
                 in.nextLine();
-                NPC.karen.showDetails();
+                karen.showDetails();
 
-                win = fight(NPC.karen);
+                win = fight(karen);
                 if (!win) {
                     break;
                 }
@@ -299,11 +308,11 @@ public class Game {
 
                 in.nextLine();
                 if (player.getWeapon()!=null) {
-                    System.out.println("Your actual weapon gives you " + player.getWeapon().getAttack() + " points of Strength");
+                    System.out.println("Your current weapon gives you " + player.getWeapon().getAttack() + " points of Strength");
                 } else {
                     System.out.println("You don't have a weapon yet.");
                 }
-                System.out.println("Would you like to equip it? (Y/N)");
+                System.out.println("Would you like to equip it?"+ ConsoleColors.WHITE_BOLD_BRIGHT + " (Y/N)" + ConsoleColors.RESET);
                 answer = in.nextLine();
                 answer = answer.toUpperCase();
 
@@ -313,14 +322,12 @@ public class Game {
                     System.out.println("You put it down, grab your things, and continue on your journey.");
                 }
                 in.nextLine();
-                System.out.println("Along the way you start to feel a bit tired. You are an hour away from the next Village.\nWould you like to stop and rest (S) or continue (C)?");
+                System.out.println("Along the way you start to feel a bit tired. You are an hour away from the next Village.\nWould you like to stop and rest " + ConsoleColors.WHITE_BOLD_BRIGHT + "(S)" +ConsoleColors.RESET+" or continue "+ ConsoleColors.WHITE_BOLD_BRIGHT +"(C)"+ConsoleColors.RESET + "?");
                 answer = in.nextLine();
                 answer = answer.toUpperCase();
                 if (answer.equals("C")) {
                     op = 7;//village
                 } else if (answer.equals("S")) {
-
-                    in.nextLine();
                     player.showDetails();
                     op = 10;
                 } else {
@@ -358,8 +365,8 @@ public class Game {
                 in.nextLine();
                 System.out.println("Startled, with a flick of her arm, she summons a gust of wind and pushes you off the carriage.");
                 System.out.println("Ready? Fight!");
-                NPC.witch.showDetails();
-                win = fight(NPC.witch);
+                witch.showDetails();
+                win = fight(witch);
                 in.nextLine();
                 if (!win) {
                     break;
@@ -387,7 +394,7 @@ public class Game {
                 in.nextLine();
                 System.out.println("This man tries to run but with no chance and you ask him why he was following you.");
                 in.nextLine();
-                System.out.println("'I'm sorry, I don't mean to bother you. \nI've heard that you are looking for the Goblet of fire, and maybe i can help you. I just need a favour in exchange. \nCould you help me? (Y/N)");
+                System.out.println("'I'm sorry, I don't mean to bother you. \nI've heard that you are looking for the Goblet of fire, and maybe i can help you. I just need a favour in exchange. \nCould you help me? " + ConsoleColors.WHITE_BOLD_BRIGHT + "(Y/N)" + ConsoleColors.RESET);
                 answer = in.nextLine();
                 answer = answer.toUpperCase();
                 if (answer.equals("Y")) {
@@ -427,8 +434,8 @@ public class Game {
                 in.nextLine();
                 System.out.println("The man with the moustache leaps forward but is trapped in a cage. It's up to you now!");
                 in.nextLine();
-                NPC.bowser.showDetails();
-                win = fight(NPC.bowser);
+                bowser.showDetails();
+                win = fight(bowser);
                 if (!win) {
                     break;
                 }
@@ -468,7 +475,7 @@ public class Game {
                 in.nextLine();
                 System.out.println("You're left wondering what happened. But that's all you can do, wonder.");
                 in.nextLine();
-                System.out.println("You notice the sun has nearly set. Will you rest through the night (R) or will you push on at the Balrog feeling it's close (C)?.");
+                System.out.println("You notice the sun has nearly set. Will you rest through the night " +ConsoleColors.WHITE_BOLD_BRIGHT + "(R)" + ConsoleColors.RESET+" or will you push on at the Balrog feeling it's close "+ConsoleColors.WHITE_BOLD_BRIGHT +"(C)" + ConsoleColors.RESET+"?.");
 
                 answer = in.nextLine();
                 answer = answer.toUpperCase();
@@ -500,8 +507,8 @@ public class Game {
                 System.out.println("A rustle in the leaves nearby startle you. A monstrous ghoul is upon you!");
                 System.out.println("It's so quick, you barely have time to escape its jaws. Ready yourself, half-asleep or not, you must defeat it.");
                 in.nextLine();
-                NPC.alghoul.showDetails();
-                win = fight(NPC.alghoul);
+                alghoul.showDetails();
+                win = fight(alghoul);
                 if (!win) {
                     break;
                 }
@@ -522,7 +529,7 @@ public class Game {
                 System.out.println("Turning a corner in a rock, you could not be more right, there it is, it's lair.");
                 System.out.println("But you realize, the entrance you're facing is not guarded. It seems forgotten.");
                 in.nextLine();
-                System.out.println("Fortune favors you! You notice a vial of a strange elixir just lying in your path. Do you drink it (D) or leave it on the ground (L)?");
+                System.out.println("Fortune favors you! You notice a vial of a strange elixir just lying in your path. Do you drink it " +ConsoleColors.WHITE_BOLD_BRIGHT +"(D)" + ConsoleColors.RESET+" or leave it on the ground "+ConsoleColors.WHITE_BOLD_BRIGHT +"(L)"+ConsoleColors.RESET+"?");
 
                 answer = in.nextLine();
                 answer = answer.toUpperCase();
@@ -549,8 +556,8 @@ public class Game {
                 in.nextLine();
                 System.out.println("It growls heavily, it's ready. Are you?");
                 in.nextLine();
-                NPC.balrog.showDetails();
-                win = fight(NPC.balrog);
+                balrog.showDetails();
+                win = fight(balrog);
                 if (!win) {
                     break;
                 }

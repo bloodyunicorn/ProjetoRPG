@@ -43,11 +43,6 @@ public class NPC extends Entity{
         player.setHp(playerHp);
 
     }
-    public static NPC karen = new NPC("Wild Karen", 30, 5);
-    public static NPC alghoul = new NPC("Alghoul",130 , 40);
-    public static NPC balrog = new NPC("Devious Balrog", 250, 60);
-    public static NPC bowser = new NPC("Bowser", 100, 30);
-    public static NPC ogre = new NPC("Ogre", 60, 40);
-    public static NPC witch = new NPC("Evil Witch", 50, 30);
+
 
 }
